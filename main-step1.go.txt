@@ -1,0 +1,16 @@
+package main
+
+type Mymod struct {}
+
+const defaultNodeVersion = "16"
+
+func (m *Mymod) buildBase(nodeVersion Optional[string]) *Node {
+  return dag.Node().
+    WithVersion(nodeVersion.GetOr(defaultNodeVersion)).
+    WithNpm().
+    WithSource(dag.Host().Directory(".", HostDirectoryOpts{
+      Exclude: []string{".git", "**/node_modules"},
+    })).
+    Install(nil)
+}
+

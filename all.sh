@@ -18,7 +18,6 @@ tar --list -f $tmp/my-app.tar
 
 cd $tmp2
 rm -f README.md
-txtar-x -C $tmp2 $SCRIPT_DIR/payload.txtar
 tar xf $tmp/my-app.tar -C $tmp2
 chmod +x *.sh
 bash -x ./e2e.sh

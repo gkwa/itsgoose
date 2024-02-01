@@ -1,0 +1,29 @@
+package main
+
+import (
+	"context"
+)
+
+type Mymod struct{}
+
+const defaultNodeVersion = "21"
+
+func (m *Mymod) buildBase(nodeVersion Optional[string]) *Node {
+	return dag.Node().
+		WithVersion(nodeVersion.GetOr(defaultNodeVersion)).
+		WithNpm().
+		WithSource(dag.Host().Directory(".", HostDirectoryOpts{
+			Exclude: []string{
+				".git",
+				"**/node_modules",
+			},
+		})).
+		Install(nil)
+}
+
+func (m *Mymod) Test(ctx context.Context, nodeVersion Optional[string]) (string, error) {
+	return m.buildBase(nodeVersion).
+		Run([]string{"test", "--", "--watchAll=false"}).
+		Stderr(ctx)
+}
+
