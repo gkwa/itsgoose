@@ -10,7 +10,7 @@ time bash -x all.sh 2>&1 | tee all.log
 
 ** resources
 
-+ https://create-react-app.dev/docs/getting-started
 + https://docs.dagger.io/zenith/developer/go/457202/test-build-publish
++ https://create-react-app.dev/docs/getting-started
 + https://github.com/sipsma/quartz-technology-daggerverse/tree/96cf1889f1a57058a00ab7d3b0fe3e6bfa3c16cb/node
 + https://daggerverse.dev/mod/github.com/sipsma/quartz-technology-daggerverse/node@96cf1889f1a57058a00ab7d3b0fe3e6bfa3c16cb
